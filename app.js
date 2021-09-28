@@ -19,7 +19,9 @@ app.use((req, res) => {
 })
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: err.message })
+  // если явно не указан статус ошибки то будет 500, если указан то будет то что указали.
+  const { status = 500, message = 'Server error' } = err
+  res.status(status).json({ message })
 })
 
 module.exports = app

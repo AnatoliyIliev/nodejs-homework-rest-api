@@ -1,5 +1,5 @@
 const { v4 } = require('uuid')
-const ubdateContacts = require('./ubdateContacts')
+const ubdate = require('./ubdate')
 
 const listContacts = require('./listContacts')
 
@@ -8,7 +8,7 @@ const addContact = async(name, email, phone) => {
   const newContacts = { name, email, phone, id: v4() }
   contacts.push(newContacts)
   // await fs.writeFile(contactsPath, JSON.stringify(contacts));
-  await ubdateContacts(contacts)
+  await ubdate(contacts)
   return newContacts
 }
 

@@ -1,35 +1,19 @@
+
 const express = require('express')
-const contactsOperation = require('../../model')
+
 const router = express.Router()
 
-router.get('/', async (req, res, next) => {
-  try {
-    const contacts = await contactsOperation.listContacts()
-    res.json(contacts)
-    // res.json({ message: 'template message' })
-  } catch (error) {
-    res.status(500).json({
-      status: 'error',
-      cade: 500,
-      message: error.message
-    })
-  }
-})
+const { controllerWraper } = require('../../middlewares')
+const { contacts: ctrl } = require('../../controllers')
 
-router.get('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get('/', controllerWraper(ctrl.listContacts))
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get('/:contactId', controllerWraper(ctrl.getContactById))
 
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post('/', controllerWraper(ctrl.addContact))
 
-router.patch('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.delete('/:contactId', controllerWraper(ctrl.removeContact))
+
+router.patch('/:contactId', controllerWraper(ctrl.updateContact))
 
 module.exports = router

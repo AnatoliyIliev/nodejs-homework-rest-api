@@ -1,15 +1,16 @@
 const ubdate = require('./ubdate')
 const listContacts = require('./listContacts')
 
-const removeContact = async(id) => {
+const updateContact = async(id, body) => {
   const contacts = await listContacts()
   const idx = contacts.findIndex(item => item.id === Number(id))
+  console.log(idx)
   if (idx === -1) {
     return null
   }
-  contacts.splice(idx, 1)
+  contacts[idx] = { ...contacts[idx], ...body }
   await ubdate(contacts)
-  return true
+  return contacts[idx]
 }
 
-module.exports = removeContact
+module.exports = updateContact
