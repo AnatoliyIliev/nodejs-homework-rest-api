@@ -1,3 +1,6 @@
+// Anatoliy wvr368YiDB6bYvLP
+// mongodb+srv://Anatoliy:wvr368YiDB6bYvLP@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority
+
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
