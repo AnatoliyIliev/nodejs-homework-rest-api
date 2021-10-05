@@ -1,16 +1,8 @@
 const contactsOperation = require('../model')
 // const createError = require('http-errors')
 // ИЛИ
-const { NotFound, BadRequest } = require('http-errors')
-// const { NotFound } = require('http-errors')
-
-const Joi = require('joi')
-
-const joiSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().required(),
-  phone: Joi.string().required(),
-})
+// const { NotFound, BadRequest } = require('http-errors')
+const { NotFound } = require('http-errors')
 
 const listContacts = async (req, res, next) => {
   const contacts = await contactsOperation.listContacts()
@@ -46,10 +38,6 @@ const removeContact = async (req, res, next) => {
 }
 
 const addContact = async (req, res, next) => {
-  const { error } = joiSchema.validate(req.body)
-  if (error) {
-    throw new BadRequest('missing required name field')
-  }
   const { name, email, phone } = req.body
   const result = await contactsOperation.addContact(name, email, phone)
   if (!result) {
@@ -67,12 +55,6 @@ const addContact = async (req, res, next) => {
 const updateContact = async (req, res, next) => {
   console.log(req.body)
   console.log(req.params)
-  // const { name, email, phone } = req.body
-  const { error } = joiSchema.validate(req.body)
-
-  if (error) {
-    throw new BadRequest('missing fields')
-  }
   const { contactId } = req.params
   const result = await contactsOperation.updateContact(contactId, req.body)
 
