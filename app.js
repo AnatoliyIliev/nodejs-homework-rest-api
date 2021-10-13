@@ -1,30 +1,16 @@
-// Anatoliy wvr368YiDB6bYvLP
-// mongodb+srv://Anatoliy:wvr368YiDB6bYvLP@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority
+const mongoose = require('mongoose')
+require('dotenv').config()
 
-const express = require('express')
-const logger = require('morgan')
-const cors = require('cors')
+const { NAME } = process.env
+const { PASSWORD } = process.env
 
-const contactsRouter = require('./routes/api/contacts')
+const DB_HOST = `mongodb+srv://${NAME}:${PASSWORD}@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority`
 
-const app = express()
-
-const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
-
-app.use(logger(formatsLogger))
-app.use(cors())
-app.use(express.json())
-
-app.use('/api/contacts', contactsRouter)
-
-app.use((req, res) => {
-  res.status(404).json({ message: 'Not found' })
+mongoose.connect(DB_HOST, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('Database connection successful')
+}).catch(error => {
+  console.log(error.message)
 })
-
-app.use((err, req, res, next) => {
-  // если явно не указан статус ошибки то будет 500, если указан то будет то что указали.
-  const { status = 500, message = 'Server error' } = err
-  res.status(status).json({ message })
-})
-
-module.exports = app
