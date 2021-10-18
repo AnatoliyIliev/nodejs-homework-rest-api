@@ -23,7 +23,7 @@ const productSchema = Schema({
     type: Boolean,
     default: false,
   },
-})
+}, { versionKey: false, timestamps: true })
 
 mongoose.connect(DB_HOST, {
   useNewUrlParser: true,
