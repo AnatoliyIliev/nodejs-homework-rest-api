@@ -5,8 +5,14 @@ const contactsOperation = require('../model')
 const { NotFound } = require('http-errors')
 
 const listContacts = async (req, res, next) => {
-  const contacts = await contactsOperation.listContacts()
-  res.json(contacts)
+  const result = await contactsOperation.listContacts()
+  res.json({
+    status: 'success',
+    code: 200,
+    data: {
+      result
+    }
+  })
 }
 
 // const getContactById = async (req, res, next) => {
