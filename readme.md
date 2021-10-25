@@ -69,11 +69,3 @@
 
 
 Для роута `POST /api/contacts` внесите изменения: если поле `favorite` не указали в `body`, то при сохранении в базу нового контакта, сделайте поле `favorite` равным по умолчанию `false`. Не забываем про валидацию данных!
-
-
-
-<!-- HOST = mongodb+srv://Anatoliy:wvr368YiDB6bYvLP@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority
-NAME = Anatoliy
-mongodb+srv://Anatoliy:GhjYrQZuasF8cKd@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority
-PASSWORD = wvr368YiDB6bYvLP
-GhjYrQZuasF8cKd -->

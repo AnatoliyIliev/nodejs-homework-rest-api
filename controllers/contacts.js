@@ -1,19 +1,19 @@
-const contactsOperation = require('../model')
+const { Contact } = require('../models')
 // const createError = require('http-errors')
 // ИЛИ
 // const { NotFound, BadRequest } = require('http-errors')
 const { NotFound } = require('http-errors')
 
-const listContacts = async (req, res, next) => {
-  const result = await contactsOperation.listContacts()
-  res.json({
-    status: 'success',
-    code: 200,
-    data: {
-      result
-    }
-  })
-}
+// const listContacts = async (req, res, next) => {
+//   const result = await contactsOperation.listContacts()
+//   res.json({
+//     status: 'success',
+//     code: 200,
+//     data: {
+//       result
+//     }
+//   })
+// }
 
 // const getContactById = async (req, res, next) => {
 //   const { contactId } = req.params
@@ -43,9 +43,10 @@ const listContacts = async (req, res, next) => {
 //   })
 // }
 
-const addContact = async (req, res, next) => {
-  const { name, email, phone } = req.body
-  const result = await contactsOperation.addContact(name, email, phone)
+const addContact = async (req, res) => {
+  // const { name, email, phone } = req.body
+  // const result = await Contact.create(name, email, phone)
+  const result = await Contact.create(req.body)
   if (!result) {
     throw new NotFound('NotFound missing required name field')
   }
@@ -78,7 +79,7 @@ const addContact = async (req, res, next) => {
 // }
 
 module.exports = {
-  listContacts,
+  // listContacts,
   // getContactById,
   // removeContact,
   addContact,

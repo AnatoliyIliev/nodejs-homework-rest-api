@@ -1,9 +1,21 @@
-// const app = require('../app')
+const mongoose = require('mongoose')
+require('dotenv').config()
 
-// const PORT = process.env.PORT || 3000
+const app = require('../app')
+
+const { NAME } = process.env
+const { PASSWORD } = process.env
 const { PORT = 3000 } = process.env
-console.log(PORT)
 
-// app.listen(PORT, () => {
-//   console.log(`Server running. Use our API on port: ${PORT}`)
-// })
+const DB_HOST = `mongodb+srv://${NAME}:${PASSWORD}@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority`
+
+mongoose.connect(DB_HOST, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  app.listen(PORT)
+  console.log('Database connection successful')
+}).catch(error => {
+  console.log(error.message)
+  process.exit(1)
+})
