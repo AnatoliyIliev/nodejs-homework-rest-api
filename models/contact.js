@@ -1,7 +1,7 @@
-const { Shema, model } = require('mongoose')
+const { Schema, model } = require('mongoose')
 const Joi = require('joi')
 
-const contactShema = Shema(
+const contactShema = Schema(
   {
     name: {
       type: String,

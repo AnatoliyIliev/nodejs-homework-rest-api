@@ -2,7 +2,7 @@ const { Contact } = require('../models')
 // const createError = require('http-errors')
 // ИЛИ
 // const { NotFound, BadRequest } = require('http-errors')
-const { NotFound } = require('http-errors')
+// const { NotFound } = require('http-errors')
 
 // const listContacts = async (req, res, next) => {
 //   const result = await contactsOperation.listContacts()
@@ -47,9 +47,9 @@ const addContact = async (req, res) => {
   // const { name, email, phone } = req.body
   // const result = await Contact.create(name, email, phone)
   const result = await Contact.create(req.body)
-  if (!result) {
-    throw new NotFound('NotFound missing required name field')
-  }
+  // if (!result) {
+  //   throw new NotFound('NotFound missing required name field')
+  // }
   res.status(201).json({
     status: 'success',
     code: 201,
