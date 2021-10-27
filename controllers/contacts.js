@@ -82,7 +82,7 @@ const updateStatusContact = async (req, res) => {
   const { contactId } = req.params
   const { body } = req.body
 
-  const result = await Contact.findByIdAndUpdate(contactId, { body }, { new: true })
+  const result = await Contact.findByIdAndUpdate(contactId, body, { new: true })
   if (!result) {
     throw new NotFound(404, 'Missing field favorite')
   }
