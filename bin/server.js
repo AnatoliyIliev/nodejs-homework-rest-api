@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 const app = require('../app')
-
+// http://localhost:3000/api/contacts
 const { NAME } = process.env
 const { PASSWORD } = process.env
 const { PORT = 3000 } = process.env
