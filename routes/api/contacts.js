@@ -16,4 +16,6 @@ router.delete('/:contactId', controllerWraper(ctrl.removeContact))
 
 router.patch('/:contactId', validation(joiSchema), controllerWraper(ctrl.updateContact))
 
+router.patch('/:contactId/favorite', controllerWraper(ctrl.updateStatusContact))
+
 module.exports = router
