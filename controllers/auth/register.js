@@ -6,7 +6,7 @@ const register = async(req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ email })
   if (user) {
-    throw new Conflict(409, 'Email in use')
+    throw new Conflict('Email in use')
     // res.status(409).json({
     //   starus: 'error',
     //   code: 409,
