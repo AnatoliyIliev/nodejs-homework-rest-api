@@ -1,5 +1,5 @@
 **Читать на других языках: [Русский](README.md), [Українська](README.ua.md).**
-
+SECRET_KEY = DSFGDFGasdfsad312312dsfsdf#$#^&^*&
 # Домашнее задание 4
 
 Создайте ветку `hw04-auth` из ветки `master`.
