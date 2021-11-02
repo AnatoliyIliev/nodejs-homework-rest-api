@@ -8,7 +8,7 @@ const { contacts: ctrl } = require('../../controllers')
 
 router.get('/', authorization, controllerWraper(ctrl.listContacts))
 
-router.get('/', authorization, controllerWraper(ctrl.pagination)) // GET /contacts?page=1&limit=20
+// router.get('/', authorization, controllerWraper(ctrl.pagination)) // GET /contacts?page=1&limit=20
 
 router.get('/:contactId', authorization, controllerWraper(ctrl.getContactById))
 
