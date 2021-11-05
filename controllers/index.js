@@ -7,8 +7,10 @@ const updateStatusContact = require('./updateStatusContact')
 const pagination = require('./pagination')
 
 const auth = require('./auth')
+const users = require('./users')
 
 module.exports = {
+  users,
   auth,
   listContacts,
   getContactById,
