@@ -1,9 +1,8 @@
 const { Contact } = require('../models')
 
 const addContact = async (req, res) => {
-  // const { name, email, phone } = req.body
-  // const result = await Contact.create(name, email, phone)
-  const result = await Contact.create(req.body)
+  const newContact = { ...req.body, owner: req.user._id }
+  const result = await Contact.create(newContact)
   // if (!result) {
   //   throw new NotFound('NotFound missing required name field')
   // }

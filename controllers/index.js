@@ -4,7 +4,6 @@ const removeContact = require('./removeContact')
 const addContact = require('./addContact')
 const updateContact = require('./updateContact')
 const updateStatusContact = require('./updateStatusContact')
-const pagination = require('./pagination')
 
 const auth = require('./auth')
 const users = require('./users')
@@ -18,5 +17,4 @@ module.exports = {
   addContact,
   updateContact,
   updateStatusContact,
-  pagination
 }

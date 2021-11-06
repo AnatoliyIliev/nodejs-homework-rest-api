@@ -2,12 +2,6 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
-// const multer = require('multer')
-// const path = require('path')
-// const fs = require('fs/promises')
-// const { v4 } = require('uuid')
-// const { read } = require('fs')
-
 const authRouter = require('./routes/api/auth')
 const usersRouter = require('./routes/api/users')
 const contactsRouter = require('./routes/api/contacts')
