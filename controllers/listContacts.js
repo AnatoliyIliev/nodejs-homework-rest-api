@@ -1,8 +1,12 @@
 const { Contact } = require('../models')
 
 const listContacts = async (req, res) => {
+  const { page = 1, limit = 10 } = req.query
+  const skip = (page - 1) * limit
+  const { _id } = req.user
   // const result = await Contact.find({}) // {} - это значит найти все
-  const result = await Contact.find({}, '_id name email phone favorite') // {} - это значит найти все и вывести только то что указано в перечне
+  const result = await Contact.find({ owner: _id },
+    '_id name email phone favorite', { skip, limit: +limit }).populate('owner', 'email')
   res.json({
     status: 'success',
     code: 200,
