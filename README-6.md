@@ -1,5 +1,7 @@
 **Читать на других языках: [Русский](README.md), [Українська](README.ua.md).**
+----->>>> SENDGRID_KEY = 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 
 
+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   <<<<------
 # Домашнее задание 6
 
 Создай ветку `hw06-email` из ветки `master`.
