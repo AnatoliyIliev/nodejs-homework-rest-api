@@ -4,7 +4,7 @@ const fs = require('fs/promises')
 const Jimp = require('jimp')
 
 const updateAvatar = async(req, res, next) => {
-  console.log(req)
+  // console.log(req)
   const { _id } = req.user
   const { path: tempDir, originalName } = req.file
   const [extention] = originalName.split('.').reverse()

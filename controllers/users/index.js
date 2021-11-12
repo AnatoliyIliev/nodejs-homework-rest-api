@@ -1,3 +1,7 @@
 const updateAvatar = require('./updateAvatar')
+const verify = require('./verify')
 
-module.exports = { updateAvatar }
+module.exports = {
+  updateAvatar,
+  verify
+}

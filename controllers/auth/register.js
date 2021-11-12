@@ -3,6 +3,7 @@ const gravatar = require('gravatar')
 const { nanoid } = require('nanoid')
 // const bcrypt = require('bcryptjs')
 const { User } = require('../../models')
+const { sendEmail } = require('../../helpers')
 
 const register = async(req, res) => {
   const { email, password } = req.body
@@ -22,6 +23,13 @@ const register = async(req, res) => {
   const newUser = new User({ email, avatarURL, verifyToken })
   newUser.setPassword(password)
   await newUser.save()
+
+  const mail = {
+    to: email,
+    subject: 'Подтверждение регистрации',
+    html: `<a target='_blank' href='http://lacalhost:3000/api/users/verify/${verifyToken}'>Нажмите для подтверждения</a>`
+  }
+  sendEmail(mail)
 
   // const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
   // await User.create({ email, password: hashPassword })
