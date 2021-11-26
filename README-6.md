@@ -1,5 +1,13 @@
 **Читать на других языках: [Русский](README.md), [Українська](README.ua.md).**
 
+<<<<<<< HEAD
+=======
+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 
+
+mongodb+srv://Anatoliy:ZXruIINMSzlYHDLj@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority
+
+  <<<<------
+>>>>>>> 6483b92b0b77513c0bca22dc92ea77d0b3650383
 # Домашнее задание 6
 
 Создай ветку `hw06-email` из ветки `master`.
