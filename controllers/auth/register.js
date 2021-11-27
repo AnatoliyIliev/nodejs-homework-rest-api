@@ -23,14 +23,16 @@ const register = async(req, res) => {
   const newUser = new User({ email, avatarURL, verifyToken })
   newUser.setPassword(password)
   await newUser.save()
+  // const hashPassward = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+  // await User.create({ email, password: hashPassward, avatarURL, verifyToken })
 
   const mail = {
     to: email,
     subject: 'Подтверждение регистрации',
-    html: `<a target='_blank' href='http://lacalhost:3000/api/users/verify/${verifyToken}'>Нажмите для подтверждения</a>`
+    html: `<a target='_blank' href='http://localhost:3000/api/users/verify/${verifyToken}'>Нажмите для подтверждения</a>`
   }
   sendEmail(mail)
-
+  console.log(verifyToken)
   // const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
   // await User.create({ email, password: hashPassword })
 

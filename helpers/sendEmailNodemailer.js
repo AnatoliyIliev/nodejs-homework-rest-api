@@ -1,18 +1,28 @@
-const sgMail = require('@sendgrid/mail')
+const nodemailer = require('nodemailer')
 require('dotenv').config()
 
-const { SENDGRID_KEY } = process.env
+const { EMAIL_PASSWORD } = process.env
 
-sgMail.setApiKey(SENDGRID_KEY)
+const nodemailerConfig = {
+  host: 'smtp.office365.com',
+  port: '586',
+  secure: 'STARTTLS',
+  auth: {
+    user: 'veili123@hotmail.com',
+    pass: EMAIL_PASSWORD,
+  }
+}
+
+const transporter = nodemailer.createTransport(nodemailerConfig)
 
 // const email = {
-//   to: 'veili123@hotmail.com',
-//   from: 'vekok12@gmail.com',
+//   to: 'vekok12@gmail.com',
+//   from: 'veili123@hotmail.com',
 //   subject: 'Новая заявка с сайта',
 //   html: '<p>Пришел заказ с сайта</p>'
 // }
 
-// const sendEmail = sgMail.send(email)
+// const sendEmail = transporter.send(email)
 //   .then(() => console.log('Email success send'))
 //   .catch(error => console.log(error.message))
 
@@ -20,8 +30,7 @@ const sendEmail = async(data) => {
   const email = { ...data, from: 'vekok12@gmail.com' }
   // eslint-disable-next-line no-useless-catch
   try {
-    await sgMail.send(email)
-    return true
+    await transporter.send(email)
   } catch (error) {
     throw error
   }
