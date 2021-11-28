@@ -10,8 +10,8 @@ const { PORT = 3000 } = process.env
 const DB_HOST = `mongodb+srv://${NAME}:${PASSWORD}@cluster0.ugw2z.mongodb.net/db-contacts?retryWrites=true&w=majority`
 
 mongoose.connect(DB_HOST, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true
 }).then(() => {
   app.listen(PORT)
   console.log('Database connection successful')

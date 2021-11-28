@@ -6,7 +6,8 @@ const { EMAIL_PASSWORD } = process.env
 const nodemailerConfig = {
   host: 'smtp.office365.com',
   port: '586',
-  secure: 'STARTTLS',
+  // secure: 'STARTTLS',
+  secure: 'false',
   auth: {
     user: 'veili123@hotmail.com',
     pass: EMAIL_PASSWORD,
@@ -14,6 +15,17 @@ const nodemailerConfig = {
 }
 
 const transporter = nodemailer.createTransport(nodemailerConfig)
+
+const sendEmail = async(data) => {
+  // const newEmail = { ...data, from: 'veili123@hotmail.com' }
+  const newEmail = { ...data, from: 'info@ntonyartist.com' }
+  // eslint-disable-next-line no-useless-catch
+  try {
+    await transporter.sendMail(newEmail)
+  } catch (error) {
+    throw error
+  }
+}
 
 // const email = {
 //   to: 'vekok12@gmail.com',
@@ -25,15 +37,5 @@ const transporter = nodemailer.createTransport(nodemailerConfig)
 // const sendEmail = transporter.send(email)
 //   .then(() => console.log('Email success send'))
 //   .catch(error => console.log(error.message))
-
-const sendEmail = async(data) => {
-  const email = { ...data, from: 'vekok12@gmail.com' }
-  // eslint-disable-next-line no-useless-catch
-  try {
-    await transporter.send(email)
-  } catch (error) {
-    throw error
-  }
-}
 
 module.exports = sendEmail

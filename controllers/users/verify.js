@@ -5,6 +5,7 @@ const verify = async(req, res, next) => {
   const { verificationToken } = req.params
   const user = await User.findOne({ verifyToken: verificationToken })
   if (!user || user.verify) {
+  // if (!user) {
     throw NotFound()
   }
   try {
